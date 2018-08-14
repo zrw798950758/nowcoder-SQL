@@ -17,15 +17,3 @@ SQL:
 SELECT *
 FROM employees
 WHERE hire_date = (SELECT MAX(hire_date) FROM employees);
-
-
-2.查找入职员工时间排名倒数第三的员工所有信息
-输出描述:
-emp_no      birth_date      first_name      last_name      gender      hire_date
-10005       1955-01-21       Kyoichi        Maliniak         M         1989-09-12
-
-SQL:
-SELECT *
-FROM employees
-ORDER BY hire_date desc
-LIMIT 2, 1;
