@@ -1,0 +1,34 @@
+题目描述
+统计各个部门对应员工涨幅的次数总和，给出部门编码dept_no、部门名称dept_name以及次数sum
+CREATE TABLE `departments` (
+`dept_no` char(4) NOT NULL,
+`dept_name` varchar(40) NOT NULL,
+PRIMARY KEY (`dept_no`));
+CREATE TABLE `dept_emp` (
+`emp_no` int(11) NOT NULL,
+`dept_no` char(4) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+CREATE TABLE `salaries` (
+`emp_no` int(11) NOT NULL,
+`salary` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`from_date`));
+输入描述:
+无
+输出描述:
+dept_no        dept_name            sum
+d001           Marketing            24
+d002           Finance              14
+d003           Human Resources      13
+d004           Production           24
+d005           Development          25
+d006           Quality Management   25
+
+SQL:
+SELECT d.dept_no, d.dept_name, count(s.salary) sum
+FROM dept_emp de LEFT JOIN salaries s ON s.emp_no = de.emp_no
+LEFT JOIN departments d ON de.dept_no = d.dept_no
+GROUP BY d.dept_no;
