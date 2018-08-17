@@ -1,0 +1,5 @@
+题目描述
+查找字符串'10,A,B' 中逗号','出现的次数cnt。
+
+SQL:
+SELECT (length('10,A,B') - length(replace('10,A,B',',',''))) cnt;
