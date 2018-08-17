@@ -1,0 +1,28 @@
+题目描述
+获取Employees中的first_name，查询按照first_name最后两个字母，按照升序进行排列
+CREATE TABLE `employees` (
+`emp_no` int(11) NOT NULL,
+`birth_date` date NOT NULL,
+`first_name` varchar(14) NOT NULL,
+`last_name` varchar(16) NOT NULL,
+`gender` char(1) NOT NULL,
+`hire_date` date NOT NULL,
+PRIMARY KEY (`emp_no`));
+输出格式：
+first_name
+Chirstian
+Tzvetan
+Bezalel
+Duangkaew
+Georgi
+Kyoichi
+Anneke
+Sumant
+Mary
+Parto
+Saniya
+
+SQL:
+SELECT first_name
+FROM employees
+ORDER BY SUBSTR(first_name, length(first_name)-1);
