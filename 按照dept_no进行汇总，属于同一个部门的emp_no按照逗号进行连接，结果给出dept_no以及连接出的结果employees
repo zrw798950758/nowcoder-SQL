@@ -1,0 +1,21 @@
+题目描述
+按照dept_no进行汇总，属于同一个部门的emp_no按照逗号进行连接，结果给出dept_no以及连接出的结果employees
+CREATE TABLE `dept_emp` (
+`emp_no` int(11) NOT NULL,
+`dept_no` char(4) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+输出格式:
+dept_no	    employees
+d001	      10001,10002
+d002	      10006
+d003	      10005
+d004	      10003,10004
+d005	      10007,10008,10010
+d006	      10009,10010
+
+SQL:
+SELECT dept_no, group_concat(emp_no,',') employees
+FROM dept_emp
+GROUP BY dept_no;
